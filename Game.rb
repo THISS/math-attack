@@ -30,6 +30,8 @@ class Game
         check_answer(player)
       end
     end
+    winner = @players.detect { |player| player.alive?}
+    puts "Congratulations Player #{player.id} you are the winner with #{player.life}/3"
     puts "Game Over"
   end
 
@@ -43,7 +45,26 @@ class Game
     if answer.to_i == player.current_answer.to_i
       puts "Nice one #{player.id}"
     else
-      puts player.remove_life ? "still alive #{player.id}" : "Oh noes, you ded #{player.id}"
+      puts player.remove_life ? "still alive #{player.id} with #{player.life}/3" : "Oh noes, you ded #{player.id}"
     end
+  end
+
+  def random_congrats
+    [
+      "Nice one Player #{player.id}!",
+      "Keep it up Player #{player.id}!",
+      "What...You are a star Player #{player.id}!",
+      "Way to go Player #{player.id}!"
+    ].sample
+  end
+
+  def random_sympathy
+    [
+      "Still alive Player #{player.id} with #{player.life}/3",
+      "Watch out Player #{player.id} with #{player.life}/3",
+      "Hang in there Player #{player.id} with #{player.life}/3",
+      "If this was a horror movie Player #{player.id}, you would be going up stairs with #{player.life}/3",
+      "Maybe next time Player #{player.id} with #{player.life}/3"
+    ].sample
   end
 end
