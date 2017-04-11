@@ -31,7 +31,7 @@ class Game
       end
     end
     winner = @players.detect { |player| player.alive?}
-    puts "Congratulations Player #{player.id} you are the winner with #{player.life}/3"
+    puts "Congratulations Player #{winner.id} you are the winner with #{winner.life}/3"
     puts "Game Over"
   end
 
@@ -43,28 +43,28 @@ class Game
     answer = @question.current_answer
       # if answer is incorrect remove life from current player
     if answer.to_i == player.current_answer.to_i
-      puts "Nice one #{player.id}"
+      puts random_congrats player.id
     else
-      puts player.remove_life ? "still alive #{player.id} with #{player.life}/3" : "Oh noes, you ded #{player.id}"
+      puts player.remove_life ? random_sympathy(player.id, player.life) : "Oh noes, you ded #{player.id}"
     end
   end
 
-  def random_congrats
+  def random_congrats(id)
     [
-      "Nice one Player #{player.id}!",
-      "Keep it up Player #{player.id}!",
-      "What...You are a star Player #{player.id}!",
-      "Way to go Player #{player.id}!"
+      "Nice one Player #{id}!",
+      "Keep it up Player #{id}!",
+      "What...You are a star Player #{id}!",
+      "Way to go Player #{id}!"
     ].sample
   end
 
-  def random_sympathy
+  def random_sympathy(id, life)
     [
-      "Still alive Player #{player.id} with #{player.life}/3",
-      "Watch out Player #{player.id} with #{player.life}/3",
-      "Hang in there Player #{player.id} with #{player.life}/3",
-      "If this was a horror movie Player #{player.id}, you would be going up stairs with #{player.life}/3",
-      "Maybe next time Player #{player.id} with #{player.life}/3"
+      "Still alive Player #{id} with #{life}/3",
+      "Watch out Player #{id} with #{life}/3",
+      "Hang in there Player #{id} with #{life}/3",
+      "If this was a horror movie Player #{id}, you would be going up stairs with #{life}/3",
+      "Maybe next time Player #{id} with #{life}/3"
     ].sample
   end
 end
