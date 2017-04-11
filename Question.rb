@@ -19,7 +19,7 @@ class Question
     first_integer = random_number_generator
     second_integer = random_number_generator
     operator = random_operator_generator
-    @current_question = first_integer.to_s + operator.to_s + second_integer.to_s
+    @current_question = first_integer.to_s + " " + operator.to_s + " " + second_integer.to_s
     @current_answer = first_integer.public_send(operator, second_integer)
   end
 

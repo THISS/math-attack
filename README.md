@@ -31,6 +31,6 @@
   - checks current answer against player :current_answer
     - if answer is incorrect remove_life from player
 
-## ARGV 
+## Gets.chomp 
 - this class will prompt the user for data and cast to int and return to game to set current users :current_answer
   

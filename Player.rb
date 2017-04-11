@@ -1,7 +1,7 @@
 class Player
   @@player_count = 0
   attr_accessor :current_answer
-
+  attr_reader :id
   def initialize
     @id = @@player_count += 1
     @life = 3
